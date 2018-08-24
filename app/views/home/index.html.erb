@@ -1,157 +1,239 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" >
   
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        
-<span class="d-block d-lg-none" style="font-family:Hanna;">HARU DOCTOR</span>
-     
-  <span class="d-none d-lg-block">
-      
-    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img\doctor.jpg" style="width:128px;height:128px;" alt="">
-     
-   </span>
-    
-  </a>
-   
-   <button class="bar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       
- <span class="navbar-toggler-icon"></span>
- 
-     </button>
-
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" >
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none" style="font-family:Hanna;">HARU DOCTOR</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img\doctor.jpg" style="width:128px;height:128px;" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-
+      <% if user_signed_in? %>
+      <li class="nav-item">
+          <a class="button" href="/users/sign_out">logout</a>
+          </li>
+      <% else %>
         <li class="nav-item">
-          <a class="button" href="/haru/login.html">login</a>
+          <a class="button" href="users/sign_in">login</a>
           </li>
-    
-      <br>
-         <li class="nav-item">
-  
-          <a class="nav-link js-scroll-trigger" href="#about">하루닥터</a>
+          <br> 
+        <% end %>
+        <% if user_signed_in? %>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">하루닥터</a>
           </li>
+          <% end %>
+          <% if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#experience">하루</a>
           </li>
-        
-   <li class="nav-item">
-    
-        <a class="nav-link js-scroll-trigger" href="#education" >건강</a>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#education" >건강</a>
           </li>
            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#skills">일일건강뉴스</a>
           </li>
-        
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/mypage">마이페이지</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">인바디</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">게시판</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">Q&A</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">채팅방</a></a>
+          </li>
+          <% else %>
+          <% end %>
         </ul>
       </div>
     </nav>
-    
-    
-
-
-
-<div class="container-fluid p-0">
+    <div class="container-fluid p-0">
       <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
+         <% if user_signed_in? %>
+         <% else %>
           <h2 class="mb-0" >하루닥터
           </h2>
           <div class="subheading mb-5" style=" font-size:1em">하루닥터는 당신의 건강을 위해 매일 최신의 정보들을 제공하는 웹 서비스입니다
           </div>
-          <a >로그인하여 당신을 위한 최적의 정보를 받아보세요</a><br>
+          <a >아직 로그인을 하지않으셨네요.</a><br>
+          <a >로그인하여 당신을 위한 최적의 정보를 받아보세요</a>
           </div>
       </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+      <% end %>
+      <% if user_signed_in? %>
+     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto" >
-          <h2 class="mb-5">하루</h2>
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">오늘의 날씨</h3>
-            <div class="resume-date text-md-right">
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+          <h2 class="mb-5">하루</h2></br>
+          
+          
+          <div>
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Doctors Say</h3>
             <div class="resume-date text-md-right">
             </div>
           </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto" >
-              <h3 class="mb-0">약복용까지 남은시간</h3>
+          
+          <div class="resume-item d-flex flex-column flex-md-row mb-5" style="text-align:left">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">오늘의 날씨 </br>서울 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_seoul["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_seoul["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>광주 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_g["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_g["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>부산 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_b["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_b["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>울산
+                  <img src="http://openweathermap.org/img/w/<%= @weather_w["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_w["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>대전
+                  <img src="http://openweathermap.org/img/w/<%= @weather_dg["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_dg["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>대구 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_dj["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_dj["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>인천
+                  <img src="http://openweathermap.org/img/w/<%= @weather_in["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_in["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+                      
+               </br>익산
+                  <img src="http://openweathermap.org/img/w/<%= @weather_iksan["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_iksan["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               
+               </h3>
             <div class="resume-date text-md-right">
             </div>
           </div>
+ 
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto"  >
+              <h3 class="mb-0" >약복용까지 남은시간 &nbsp;&nbsp;<span id="clock"></span> 입니다<br/></h3>
+         
+        <h3>  지정해둔 시간  <%= current_user.mypages.first.me_h %>시  <%= current_user.mypages.first.me_m %>분 입니다 </h3> </br>   
+            <div class="resume-date text-md-left">
+            </div>
+          </div>
         </div>
-
+    
       </section>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
-          <h2 class="mb-5">건강</h2>
+          <h2 class="mb-5">건강</h2></br></br>
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">추천식단</h3>
+             <body>
+              <table style="width:100%">
              
-
-<body>
-       
-
-
-       <table style="width:100%">
-              <tr>
-                <th>아침</th>
-                <th>점심</th> 
-                <th>저녁</th>
-              </tr>
-              <tr>
-                <td>쌀밥<br>된장국<br>가자미구이<br>메추리알조림<br>포기김치<br></td>
-                <td>쌀밥<br>소고기무국<br>알감자조림<br>오이양파무침<br>포기김치<br></td>
-                <td>쌀밥<br>들기름미역국<br>단무지무침<br>등뼈감자찜<br>포기김치<br></td>
-              </tr>
               
             </table>
-           
-
- </body>
-  
-
-        </div>
-         
-
- <div class="resume-item d-flex flex-column flex-md-row">
-          
-  <div class="resume-content mr-auto">
-         
-     <h3 class="mb-0">도전음식</h3>
-           
- </div>
-         
-   <div class="resume-date text-md-right">
-  
+            </body>
           </div>
-   
-       </div>
-       
-   <!-- d -->
-      
-  </div>
-    
-  </section>
-
-     
- <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-      
-  <div class="my-auto">
-       
-   <h2 class="mb-5">일일뉴스</h2>
-
-     
-   
+          <div class="resume-item d-flex flex-column flex-md-row">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">도전음식</h3>
+            </div>
+            <div class="resume-date text-md-right">
+            </div>
+          </div>
+          <!-- d -->
         </div>
-   
-   </section>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+        <div class="my-auto">
+          <h2 class="mb-5">일일뉴스</h2>
+          
+          
+        </div>
+      </section>
+    <script>
+    
+    var test1 = <%= current_user.mypages.last.me_h %>;
+    var test2 = <%= current_user.mypages.last.me_m %>;
+    
+    
+    function printTime() {
+      var clock = document.getElementById("clock"); // 출력할 장소 선택
+    	var hour = <%= current_user.mypages.last.me_h %>;
+    	var minutes = <%= current_user.mypages.last.me_m %>;
+ 
+    
+    	var old = new Date(2018, 7 ,30, hour, minutes,00,00);		//여기에 값이 들어가야 남은시간이 계산이되는데 안들어갔어						//지정해둔 시간
+    	var old_h = old.getHours();
+    	var old_m = old.getMinutes();
+    	var old_s = old.getSeconds();
+    	var old_sum = old_s + ( old_m * 60) + (old_h * 60 * 60 );   //지정해둔 시간을 초 단위로 변환.
+    	
+      // console.log(old, old_h, old_m, old_s, old_sum);
+        
+      var now = new Date();                                                  // 현재시간
+      var now_h = now.getHours();
+    	var now_m = now.getMinutes();
+    	var now_s = now.getSeconds();
+    	var now_sum = now_s + ( now_m * 60) + (now_h * 60 * 60 );   //지정해둔 시간을 초 단위로 변환.
+        
+    	var test = 1;
+    	
+    
+    	if(old_sum - now_sum > 0 ){
+    		var newtime = (old_sum - now_sum)
+    		var newtime_h = parseInt(newtime / 3600);
+    		newtime = newtime % 3600;
+    		var newtime_m =  parseInt(newtime / 60);
+    		newtime = newtime % 60;
+    	} else {
+    		var newtime = parseInt( 86400 - (  (old_sum - now_sum) * -1 ));
+    		var newtime_h =  parseInt(newtime / 3600);
+    		newtime = newtime % 3600;
+    		var newtime_m =  parseInt(newtime / 60);
+    		newtime = newtime % 60;
+    	}
+    	
+    
+      var nowTime =  newtime_h + "   시" +  newtime_m + "   분" + newtime  + "  초";
+        
+    	document.getElementById('clock').innerHTML = nowTime;           // 남은 약 복용 시간을 출력
+    	// title_real.innerHTML = old_h;
+    	// content_real.innerHTML = old_m;
+    }
+    
+    function start_count() {
+	    setInterval(printTime, 1000);   //1초 마다 실행
+    }
+    
+    start_count();    
+    
   
+    imgURL.innerHTML = imgURL1;
+    
+    </script>    
+
+    </div>
+    <% else %>
+    <% end %>
+    
+ 
  
